@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const saludo = document.getElementById('saludo');
     const boton = document.getElementById('boton');
     getLocation();
-    //boton.addEventListener('click', getLocation);
+    
     async function getLocation() {
         const response = await fetch('https://ipapi.co/json/');
         const localizacion = await response.json();
