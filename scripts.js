@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const doxeado = document.getElementById('doxeado');
     const saludo = document.getElementById('saludo');
     const boton = document.getElementById('boton');
-
-    boton.addEventListener('click', getLocation);
+    getLocation();
+    //boton.addEventListener('click', getLocation);
     async function getLocation() {
         const response = await fetch('https://ipapi.co/json/');
         const localizacion = await response.json();
