@@ -11,11 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
         localizacion = await response.json();
         console.log(localizacion);
         doxeado.innerHTML = localizacion.ip+' '+localizacion.country+' '+localizacion.city+' '+localizacion.postal;
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+        /* const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
         const targetUrl = 'http://stefanbohacek.com/hellosalut/?cc='+localizacion.country;
         const saludoResponse = await fetch(proxyUrl + targetUrl);
         const saludoLocalizacion = await saludoResponse.json();
-        saludo.innerHTML = saludoLocalizacion.hello;
+        saludo.innerHTML = saludoLocalizacion.hello; */
         getWeather();
     }
 
