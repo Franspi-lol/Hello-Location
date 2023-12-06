@@ -1,12 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
     const doxeado = document.getElementById('doxeado');
     const saludo = document.getElementById('saludo');
-    const boton = document.getElementById('boton');
+    const temperatura = document.getElementById('temperatura');
+    let localizacion;
     getLocation();
+    
     
     async function getLocation() {
         const response = await fetch('https://ipapi.co/json/');
-        const localizacion = await response.json();
+        localizacion = await response.json();
         console.log(localizacion);
         doxeado.innerHTML = localizacion.ip+' '+localizacion.country+' '+localizacion.city+' '+localizacion.postal;
         const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
@@ -14,5 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
         const saludoResponse = await fetch(proxyUrl + targetUrl);
         const saludoLocalizacion = await saludoResponse.json();
         saludo.innerHTML = saludoLocalizacion.hello;
+        getWeather();
     }
+
+    async function getWeather(){
+        const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude='+localizacion.latitude+'&longitude='+localizacion.longitude+'&hourly=temperature_2m&timezone=America%2FSao_Paulo&forecast_days=1');
+        const weather = await response.json();
+        console.log(weather);
+        const now = new Date();
+        const currentHour = now.getHours();
+        temperatura.innerHTML = weather.hourly.temperature_2m[currentHour]+'ºC';
+    }
+
+    //https://api.open-meteo.com/v1/forecast?latitude=-37.9954&longitude=-57.5351&hourly=temperature_2m&forecast_days=1
 });
