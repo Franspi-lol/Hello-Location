@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log("Latitude: " + position.coords.latitude);
                 console.log("Longitude: " + position.coords.longitude);
     
-                /* const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=AIzaSyBu8VxO23kfgxZn6IoXTc53T2v7RCU13gc`);
+                /* const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${position.coords.latitude},${position.coords.longitude}&key=`);
                 const data = await response.json();
                 console.log(data.results[0].formatted_address);
                 ubicacion.innerHTML = data.results[0].formatted_address; */
